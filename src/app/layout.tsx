@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { CssBaseline } from "@mui/material";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500"] });
 export const metadata: Metadata = {
@@ -8,7 +9,6 @@ export const metadata: Metadata = {
 };
 
 import "./globals.css";
-import { CssBaseline } from "@mui/material";
 
 export default function RootLayout({
   children,
