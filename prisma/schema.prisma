@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Template {
+  id String @id @default(uuid())
+
+  headerId        Int    @map("header_id")
+  headerTextColor String @map("header_text_color")
+  headerBgColor   String @map("header_bg_color")
+  headerLinks     String @map("header_links") @db.Text
+
+  mainId        Int    @map("main_id")
+  mainTextColor String @map("main_text_color")
+  mainBgColor   String @map("main_bg_color")
+  mainText      String @map("main_text") @db.Text
+
+  footerId        Int    @map("footer_id")
+  footerTextColor String @map("footer_text_color")
+  footerBgColor   String @map("footer_bg_color")
+  footerText      String @map("footer_text") @db.Text
+
+  @@index([id])
+  @@map("templates")
+}
