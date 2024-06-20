@@ -8,7 +8,8 @@ datasource db {
 }
 
 model Template {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
+  name String
 
   headerId        Int    @map("header_id")
   headerTextColor String @map("header_text_color")
