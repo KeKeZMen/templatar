@@ -105,6 +105,13 @@ export const EditTemplateMenu: FC<PropsType> = ({ template }) => {
     }
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(
+      `http://localhost:3000/preview/${template.id}`
+    );
+    toast.success("Ссылка скопирована в буфер обмена");
+  };
+
   return (
     <Box
       display="flex"
@@ -351,9 +358,24 @@ export const EditTemplateMenu: FC<PropsType> = ({ template }) => {
         />
       </Box>
 
-      <Button type="submit" variant="contained" sx={{ alignSelf: "flex-end" }}>
-        Сохранить
-      </Button>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        gap="10px"
+      >
+        <Button type="button" variant="text" onClick={handleCopy}>
+          Скопировать ссылку
+        </Button>
+
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ alignSelf: "flex-end" }}
+        >
+          Сохранить
+        </Button>
+      </Box>
     </Box>
   );
 };
