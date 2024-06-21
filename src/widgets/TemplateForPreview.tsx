@@ -1,26 +1,26 @@
 "use client";
 
-import { Template } from "@prisma/client";
-import { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import {
   ClassicHeader,
   CompactHeader,
   MinimalHeader,
   ModernHeader,
-} from "@widgets/headers";
+} from "./headers";
 import {
   ClassicFooter,
   CompactFooter,
   MinimalFooter,
   ModernFooter,
-} from "@widgets/footers";
-import { Box, Container, Typography } from "@mui/material";
+} from "./footers";
+import { Box, Typography, Container } from "@mui/material";
+import { Template } from "@prisma/client";
 
 type PropsType = {
   template: Template;
 };
 
-export const TemplatePreview: FC<PropsType> = ({ template }) => {
+export const TemplateForPreview: FC<PropsType> = ({ template }) => {
   const [footerHeight, setFooterHeight] = useState(0);
   const footerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -53,9 +53,7 @@ export const TemplatePreview: FC<PropsType> = ({ template }) => {
 
   return (
     <Box
-      margin="38px"
-      width="80%"
-      border="1px solid #BBBBBB"
+      width="100%"
       position="relative"
       display="flex"
       alignItems="center"
