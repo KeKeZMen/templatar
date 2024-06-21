@@ -1,27 +1,32 @@
 import { Box, Typography } from "@mui/material";
 import React, { FC } from "react";
 import ModeOutlinedIcon from "@mui/icons-material/ModeOutlined";
+import { Template } from "@prisma/client";
+import Link from "next/link";
 
 type PropsType = {
-  name: string;
+  template: Template;
 };
 
-export const TemplateCard: FC<PropsType> = ({ name }) => {
+export const TemplateCard: FC<PropsType> = ({ template }) => {
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      <Box
-        bgcolor="#D9D9D9"
-        display="flex"
-        justifyContent="center"
-        width={285}
-        height={175}
-        sx={{
-          cursor: "pointer",
-        }}
-      >
-        <ModeOutlinedIcon sx={{ height: 100, width: 100 }} />
+    <Link href={`/template/${template.id}`}>
+      <Box display="flex" flexDirection="column" gap="6px">
+        <Box
+          bgcolor="#D9D9D9"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          width={280}
+          height={175}
+          sx={{
+            cursor: "pointer",
+          }}
+        >
+          <ModeOutlinedIcon sx={{ height: 100, width: 100, color: "white" }} />
+        </Box>
+        <Typography fontWeight="bold">{template.name}</Typography>
       </Box>
-      <Typography>{name}</Typography>
-    </Box>
+    </Link>
   );
 };
